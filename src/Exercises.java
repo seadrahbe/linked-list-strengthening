@@ -1,3 +1,5 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class Exercises {
     /**
      * Returns a count of how many nodes are in the linked list.
@@ -217,6 +219,27 @@ public class Exercises {
      * @return the head of the new list after k rotations to the left
      */
     public static ListNode rotateLeft(ListNode head, int k) {
-        return null;
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+
+        for (int i = k; i > 0; i--) {
+
+            ListNode curr = head;
+            ListNode temp = new ListNode(head.data, null);
+
+            while (curr.next != null) {
+                curr = curr.next;
+            }
+
+            curr.next = temp;
+
+            head = head.next;
+        }
+
+        return head;
     }
+
 }
